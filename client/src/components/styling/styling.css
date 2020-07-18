@@ -1,0 +1,92 @@
+.tvShowWrapper {
+    background: rgb(214, 214, 191);
+    width: 23%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 0.5rem;
+  }
+  .headerWrapper {
+    position: fixed;
+    top: 0px;
+    padding: 1rem 0;
+    left: 0px;
+    max-height: 100%;
+    background: rgb(84, 84, 253);
+    overflow-y: scroll;
+    width: 100%;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  h1 {
+    margin: 0;
+  }
+  .authWrapper {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10%;
+  }
+  input,
+  label {
+    display: block;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 200px;
+  }
+  .btn {
+    width: 100px;
+    cursor: pointer;
+  }
+  .auth-input {
+    padding: 0.38rem;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 3px;
+    background-color: #ffffff;
+  }
+  
+  /* single TV show */
+  .tvshowDetails {
+    display: flex;
+    justify-content: space-evenly;
+    color: #797878;
+  }
+  .watchScheduleBtn {
+    color: #494848;
+  }
+  .menuWrapper {
+      margin-right:8rem;
+  }
+  .menuWrapper,
+  .menuWrapper a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: medium;
+    padding-top: 0.5rem;
+  }
+  .logoutBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+  }
+  .searchDataWrapper {
+    min-height: 720px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 5rem;
+}
+.singleSearchData {
+    width: 20%;
+    background-color: white;
+    margin: 1rem;
+    padding: 0.3rem;
+    color: black;
+    border-radius: 2px;
+}

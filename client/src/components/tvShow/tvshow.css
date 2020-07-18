@@ -1,0 +1,31 @@
+/* all tv shows page wrapper */
+.main {
+    background-color: whitesmoke;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3rem 4rem;
+  }
+  
+  /* comments */
+  /* entire wrapper */
+  .commentsWrapper {
+    padding: 1rem 3rem;
+    background-color: rgb(16, 16, 41);
+    border-radius: 3px;
+    color: white;
+  }
+  /* comments input field */
+  #comment,
+  #comment:focus {
+    border: 0;
+  }
+  /* single comment display */
+  .singleComment {
+    padding: 0.01rem 0;
+    border-bottom: 1px solid rgb(99, 99, 246);
+  }
+  /* comment date */
+  .commentDate {
+    color: rgb(184, 182, 182);
+    font-size: small;
+  }
