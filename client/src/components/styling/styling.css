@@ -69,13 +69,6 @@
     font-size: medium;
     padding-top: 0.5rem;
   }
-  .logoutBtn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: medium;
-    cursor: pointer;
-  }
   .searchDataWrapper {
     min-height: 720px;
     display: flex;

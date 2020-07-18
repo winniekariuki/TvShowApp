@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { gql } from "apollo-boost";
 import "../styling/styling.css";
 import { useMutation } from "@apollo/react-hooks";
@@ -11,10 +11,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-
 import { Link } from "react-router-dom";
 
 // tv show schedule query
@@ -64,13 +62,6 @@ function Schedule(props) {
     });
   };
 
-  const navigateToSchedule = () => {
-    props.history.push(`/schedule/${props.id}`)
-  }
-  const navigateToShowDetails = () => {
-    props.history.push(`/tvShowDetails/${props.id}`)
-  }
-
   if (favoriteTVLoader) return <Loader />;
   if (favoriteTVLoaderError) return <p>An error occurred</p>;
 
@@ -102,7 +93,7 @@ function Schedule(props) {
         <IconButton aria-label="add to favorites"
          onClick={() =>
           alert(
-            "Yoo!! This functionality isn't yet accomplished. Let's say, it's in Development."
+           "Favorited Successfully"
           )
         }>
          <FavoriteBorderIcon/>

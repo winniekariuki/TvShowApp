@@ -3,22 +3,18 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useApolloClient } from "@apollo/react-hooks";
-import SingleTVShow from "../../pages/tvShowDetails";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -106,7 +102,7 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState("");
   const [search, setSearch] = useState("");
-  const { data, error } = useQuery(SEARCH_TV_SHOW_BY_NAME, {
+  const { data } = useQuery(SEARCH_TV_SHOW_BY_NAME, {
     variables: { name: search },
   });
   const classes = useStyles();
@@ -128,6 +124,16 @@ const Header = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
+  const history = useHistory();
+
+  const logoutHandler = (e, props) => {
+    e.preventDefault();
+    client.writeData({ data: { isLoggedIn: false } });
+    localStorage.clear();
+    if(localStorage.getItem("token") == null){
+      history.push("/");
+    }
+  }
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
@@ -137,38 +143,29 @@ const Header = () => {
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+      <div className="menuWrapper">
+            {/* menu items */}
+            <Link to="/schedule">< WatchLaterIcon/></Link>
+          </div>
+        
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      {localStorage.getItem("token") && (
         <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
+            aria-label="account of current user"
+            aria-haspopup="true"
+            onClick={logoutHandler}
+            color="inherit"
+          >
+        <ExitToAppIcon/>
+          </IconButton>
+            )}
       </MenuItem>
     </Menu>
   );
@@ -199,12 +196,7 @@ const Header = () => {
   }
   const client = useApolloClient();
 
-  const logoutHandler = (e) => {
-    e.preventDefault();
-    client.writeData({ data: { isLoggedIn: false } });
-    localStorage.clear(); // remove data on user's browser storage
-  };
-  if (error) return <p>Error Occurred, Try again</p>;
+
 
   return (
     <Fragment>
@@ -231,10 +223,10 @@ const Header = () => {
       
           <div className="menuWrapper">
             {/* menu items */}
-            <Link to="/schedule">< WatchLaterIcon/></Link> &nbsp;&nbsp;
+            <Link to="/schedule">< WatchLaterIcon/></Link>
+          </div>
         {localStorage.getItem("token") && (
         <IconButton
-            edge="end"
             aria-label="account of current user"
             aria-controls={menuId}
             aria-haspopup="true"
@@ -244,7 +236,6 @@ const Header = () => {
         <ExitToAppIcon/>
           </IconButton>
             )}
-          </div>
      
 
         </div>
@@ -304,27 +295,6 @@ const Header = () => {
               </div>
             );
           })}
-
-
-          {/* display single TV show on click */}
-          {showModal && (
-            <div
-              id="myModal"
-              className={
-                showModal ? `modal display-block` : `modal display-none`
-              }
-            >
-              <div className="modal-content">
-                <span
-                  className="close closeModalBtn"
-                  onClick={() => setShowModal(false)}
-                >
-                  &times;
-                </span>
-                <SingleTVShow id={id} />
-              </div>
-            </div>
-          )}
         </div>
       )}
     </div>

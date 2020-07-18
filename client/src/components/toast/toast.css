@@ -3,15 +3,15 @@
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
-    background-color: #333;
-    color: #fff;
+    background-color: rgb(248, 234, 234);
+    color: rgb(41, 36, 36);
     text-align: center;
     border-radius: 2px;
     padding: 16px;
     position: fixed;
     z-index: 100;
     left: 45%;
-    bottom: 30px;
+    bottom: 50px;
     font-size: 17px;
   }
   /* show toast by animating */

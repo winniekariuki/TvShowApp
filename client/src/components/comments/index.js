@@ -65,7 +65,7 @@ let { data, loading, error } = useQuery(GET_COMMENTS, {
       setTimeout(function () {
         toastDiv.className = toastDiv.className.replace("show", "");
       }, 3000);
-      toastDiv.innerHTML = "Comment is Required";
+      toastDiv.innerHTML = "No comment.Kindly write down your comment";
       return toastDiv;
     }
     createTVShowComment({
@@ -91,7 +91,7 @@ let { data, loading, error } = useQuery(GET_COMMENTS, {
         rows="5"
         id="comment"
         value={comment}
-        placeholder="Some comment text here ..."
+        placeholder="Write your comment here"
         className="auth-input"
         onChange={commentHandler}
       />

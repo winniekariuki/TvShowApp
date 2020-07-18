@@ -58,17 +58,8 @@ const  SignUp = ({ signup }) => {
   const [registerPassword, setRegisterPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  // onchange input handlers 
-  const emailHandler = (e) => {
-    e.target.name && setEmail(e.target.value);
-  };
-
   const registerEmailHandler = (e) => {
     e.target.name && setNewEmail(e.target.value)
-  };
-
-  const passwordHandler = (e) => {
-    setPassword(e.target.value);
   };
 
   const registerPasswordHandler = (e) => {

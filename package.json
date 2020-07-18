@@ -1,0 +1,31 @@
+{
+  "name": "TvShowApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winniekariuki/TvShowApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/winniekariuki/TvShowApp/issues"
+  },
+  "homepage": "https://github.com/winniekariuki/TvShowApp#readme",
+  "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "apollo-datasource-rest": "^0.9.3",
+    "apollo-server": "^2.16.0",
+    "config": "^3.3.1",
+    "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "material-ui": "^0.20.2",
+    "mongoose": "^5.9.24"
+  }
+}
